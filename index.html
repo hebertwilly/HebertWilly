@@ -1,34 +1,587 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hebert Willy — Portfólio</title>
-    <meta name="description" content="Portfólio de Hebert Willy — Desenvolvedor Web & Estudante de Eng. de Software (UTFPR)" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="global.css" />
-    <script src="tailwind.config.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="font-sans text-ink-900 bg-black">
-    <header class="sticky top-0 z-50 backdrop-blur text-white bg-black/85 border-b border-[#252525]">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <a href="#home" class="font-semibold tracking-tight text-brand-600 transition-transform duration-100 hover:scale-110">Hebert Willy</a>
-                <nav class="hidden md:flex items-center gap-6 text-sm">
-                    <a href="#sobre" class="transition-transform duration-100 hover:scale-110">Sobre</a>
-                    <a href="#projetos" class="transition-transform duration-100 hover:scale-110">Projetos</a>
-                    <a href="#experiencia" class="transition-transform duration-100 hover:scale-110">Experiência</a>
-                    <a href="#habilidades" class="transition-transform duration-100 hover:scale-110">Habilidades</a>
-                    <a href="#contato" class="transition-transform duration-100 hover:scale-110">Contato</a>
-                    <a href="" id="btnCV" class="transition-transform duration-100 hover:scale-110" >Meu Curriculo</a>
-                </nav>
-            </div>
-        </div>
-  </header>
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>Hebert Willy — Portfólio</title>
+            <meta name="description" content="Portfólio de Hebert Willy — Desenvolvedor Web & Estudante de Eng. de Software (UTFPR)" />
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="global.css" />
+            <script src="https://unpkg.com/@phosphor-icons/web"></script>
+            <script src="tailwind.config.js"></script>
+            <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body class="font-sans text-ink-900 bg-black">
+            <header id="site-header" class="sticky top-0 z-50 backdrop-blur text-white bg-[rgba(120,120,120,0.12)] border-b border-[#2b2a2a]">
+                <div class="max-w-6xl mx-auto px-4">
+                    <div class="flex items-center justify-between h-16">
+                        <a href="#home" class="font-semibold tracking-tight text-brand-600 transition-transform duration-100 hover:scale-110">hebertwilly</a>
+                        <button id="menuToggle" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/30" aria-controls="mobileMenu" aria-expanded="false">
+                            <!-- Ícone hambúrguer -->
+                            <svg id="iconOpen" class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <!-- Ícone fechar -->
+                            <svg id="iconClose" class="h-6 w-6 hidden" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span class="sr-only">Abrir menu</span>
+                        </button>
+                        <nav class="hidden md:flex items-center gap-6 text-sm">
+                            <a href="#sobre" class="transition-transform duration-100 hover:scale-110">Sobre</a>
+                            <a href="#projetos" class="transition-transform duration-100 hover:scale-110">Projetos</a>
+                            <a href="#experiencia" class="transition-transform duration-100 hover:scale-110">Experiência</a>
+                            <a href="#habilidades" class="transition-transform duration-100 hover:scale-110">Habilidades</a>
+                            <a href="#contato" class="transition-transform duration-100 hover:scale-110">Contato</a>
+                            <a href="" id="btnCV" class="transition-transform duration-100 hover:scale-110">Meu Currículo</a>
+                        </nav>
+                    </div>
 
-  
-</body>
-</html>
+                    <nav id="mobileMenu" class="md:hidden hidden border-t border-[#252525] pt-3 pb-6">
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a class="block px-2 py-2 rounded-lg hover:bg-white/5" href="#sobre">Sobre</a></li>
+                            <li><a class="block px-2 py-2 rounded-lg hover:bg-white/5" href="#projetos">Projetos</a></li>
+                            <li><a class="block px-2 py-2 rounded-lg hover:bg-white/5" href="#experiencia">Experiência</a></li>
+                            <li><a class="block px-2 py-2 rounded-lg hover:bg-white/5" href="#habilidades">Habilidades</a></li>
+                            <li><a class="block px-2 py-2 rounded-lg hover:bg-white/5" href="#contato">Contato</a></li>
+                            <li><a class="block px-2 py-2 rounded-lg hover:bg-white/5" id="btnCVMobile" href="">Meu Currículo</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+        <!--HERO-->
+            <section id="home" class="relative w-full overflow-hidden text-white bg-[#0A0A0A]">
+                <!-- brilhos prateados (radiais em grayscale) -->
+                <div class="pointer-events-none absolute inset-0">
+                    <!-- highlight superior/esquerda -->
+                    <div class="absolute -top-32 -left-32 h-96 w-96 rounded-full blur-3xl opacity-40"
+                        style="background: radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,0.35) 0%, rgba(160,160,160,0.12) 35%, rgba(20,20,20,0) 70%);">
+                    </div>
+                    <!-- highlight inferior/direita -->
+                    <div class="absolute -bottom-40 -right-24 h-[28rem] w-[28rem] rounded-full blur-3xl opacity-30"
+                        style="background: radial-gradient(60% 60% at 50% 50%, rgba(230,230,230,0.28) 0%, rgba(120,120,120,0.12) 40%, rgba(10,10,10,0) 75%);">
+                    </div>
+                    <!-- faixa sutil ao centro (efeito metal escovado) -->
+                    <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[60%] blur-2xl opacity-10"
+                        style="background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(200,200,200,0.3) 50%, rgba(255,255,255,0) 100%);"></div>
+                </div>
+
+                <div class="refresh-animate relative max-w-6xl mx-auto px-5 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+                    <!-- TEXTO -->
+                    <div class="order-1 md:order-1">
+                        <span class="block text-sm md:text-base text-white/70">I am Hebert Willy</span>
+
+                        <h1 class="mt-2 font-extrabold leading-[1.05] text-[clamp(2rem,6vw,3.25rem)]">
+                            <span class="bg-clip-text text-transparent"  style="background-image: linear-gradient(90deg, #f9fafb 0%, #d1d5db 40%, #9ca3af 80%);">
+                                Desenvolvedor
+                            </span>
+                            <span class="text-white"> + </span>
+                            <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(180deg,#E5E7EB 0%,#F9FAFB 40%,#D1D5DB 100%);">
+                                UI/UX Designer
+                            </span>
+                        </h1>
+
+                        <p class="mt-4 max-w-xl text-sm md:text-base text-white/70">
+                            Estudante de Engenharia de Software na UTFPR, atuo como desenvolvedor Full Stack e UI/UX Designer, com experiência em projetos reais e pessoais que ampliam minha visão técnica e criativa.
+                        </p>
+
+                        <!-- AÇÕES -->
+                        <div class="mt-6 flex flex-wrap items-center gap-4">
+                            <a href="#cv"
+                                class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium hover:border-white/35 hover:bg-white/5 transition">
+                                <i class="ph ph-download-simple text-lg"></i>
+                                Download CV
+                            </a>
+
+                            <!-- socials -->
+                            <div class="flex items-center gap-3">
+                                <a href="https://github.com/hebertwilly" class="grid place-items-center h-9 w-9 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition" aria-label="GitHub">
+                                    <i class="ph ph-github-logo text-xl"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/hebertwilly/" class="grid place-items-center h-9 w-9 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition" aria-label="LinkedIn">
+                                    <i class="ph ph-linkedin-logo text-xl"></i>
+                                </a>
+                                <a href="https://www.behance.net/hebertwilly1" class="grid place-items-center h-9 w-9 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition" aria-label="Behance">
+                                    <i class="ph ph-behance-logo text-xl"></i>
+                                </a>
+                                <a href="https://wa.me/5514997031879" class="grid place-items-center h-9 w-9 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition" aria-label="WhatsApp">
+                                    <i class="ph ph-whatsapp-logo text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEM -->
+                    <div class="refresh-animate order-2 md:order-2">
+                        <div class="mx-auto md:ml-auto md:mr-0 w-56 sm:w-64 md:w-72 lg:w-[400px]  overflow-hidden relative">
+                            <img src="./imgs/AVATAR3.png" alt="Foto Hebert"
+                                class="relative h-full w-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--SOBRE-->
+            <section id="sobre" class="relative mx-auto max-w-6xl px-5 py-12">
+                <!-- 2 colunas no lg, com 2 linhas: [título] / [texto + stacks] -->
+                <div class="grid items-start gap-10 md:gap-12 lg:grid-cols-2 lg:grid-rows-[auto_1fr]">
+
+                    <!-- Linha 1, Coluna 1: Título -->
+                    <div class="elemento lg:col-start-1 lg:row-start-1">
+                        <h1 class="mt-2 font-extrabold leading-[1.05] text-3xl sm:text-4xl md:text-5xl">
+                            <span class="bg-clip-text text-transparent"
+                            style="background-image: linear-gradient(90deg, #f9fafb 0%, #d1d5db 40%, #9ca3af 80%);">
+                            Sobre Mim
+                            </span>
+                        </h1>
+                    </div>
+
+                    <!-- Linha 2, Coluna 1: Parágrafos + CTAs -->
+                    <div class="elemento lg:col-start-1 lg:row-start-2">
+                        <p class="mt-2 max-w-2xl text-sm sm:text-base md:text-[17px] text-white/70">
+                            Sou desenvolvedor apaixonado por tecnologia, com experiência em Front-end, Back-end e UI/UX. Meu primeiro contato foi na empresa júnior UnectJr, onde descobri minha vocação e desde então venho me especializando em desenvolvimento web e mobile, sempre buscando novas stacks e desafios.
+                        </p>
+                        <p class="mt-4 max-w-2xl text-sm sm:text-base md:text-[17px] text-white/70">
+                            Trabalho com HTML, CSS, JavaScript, TypeScript, React, Node.js e também já atuei em projetos com UI/UX Design. Participei de iniciativas acadêmicas e freelas, desenvolvendo desde landing pages responsivas até sistemas web completos, sempre focado em performance e boa experiência do usuário.
+                        </p>
+
+                        <div class="mt-6 flex flex-wrap items-center gap-3 text-white">
+                            <a href="#projetos"
+                                class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm font-medium hover:border-white/35 hover:bg-white/5 transition">
+                                <i class="ph ph-arrow-up-right"></i>
+                                Meus Projetos
+                            </a>
+                            <a href="https://wa.me/5599999999999" target="_blank" rel="noopener"
+                                class="grid h-10 w-10 place-items-center rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition"
+                                aria-label="WhatsApp">
+                                <i class="ph ph-whatsapp-logo text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Linha 2, Coluna 2: Card de Stacks (alinhado ao parágrafo) -->
+                    <div class="elemento lg:col-start-2 lg:row-start-2 self-start w-full rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h2 class="mb-4 text-lg sm:text-xl font-bold text-white/80">Stacks</h2>
+                        <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-4 gap-4 sm:gap-5 justify-items-center">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-html-5-48.png" alt="HTML">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-css3-48.png" alt="CSS">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-javascript-48.png" alt="JavaScript">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-texto-datilografado-48.png" alt="TypeScript">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-react-48.png" alt="React">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-nodejs-48.png" alt="Node.js">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-figma-48.png" alt="Figma">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-sql-48.png" alt="SQL">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-mongodb-48.png" alt="MongoDB">
+                            <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" loading="lazy" src="./imgs/icons/icons8-firebase-48.png" alt="Firebase">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="projetos" class="mx-auto max-w-[80rem] w-full text-white">
+
+                <!-- PAI com fundo largo e borda -->
+                <div class="rounded-2xl border border-white/10 bg-white/5 px-5 md:px-8 py-12 md:py-16">
+
+                    <!-- CONTEÚDO centralizado com respiro -->
+                    <div class="mx-auto max-w-6xl">
+
+                        <h1 class="elemento text-3xl md:text-5xl font-extrabold tracking-tight mb-6 md:mb-[40px]">
+                            <span class="bg-clip-text text-transparent"
+                            style="background-image:linear-gradient(90deg,#f9fafb 0%,#d1d5db 40%,#9ca3af 80%)">
+                            Projetos
+                            </span>
+                        </h1>
+
+                        <div class="elemento mb-5 flex items-center justify-between">
+                            <h3 class="text-lg md:text-xl font-semibold">Desenvolvimento</h3>
+                        </div>
+
+                        <div id="gridDev" class="elemento grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+
+                        <!-- controles -->
+                        <div id="devControls" class="elemento mt-6 flex justify-center">
+                            <button id="btnDevToggle"
+                            class="text-sm px-4 py-2 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition"
+                            aria-expanded="false" aria-controls="gridDev">
+                                Ver mais
+                            </button>
+                        </div>
+
+                        <!-- UI/UX (mesmo respiro dos filhos) -->
+                        <div class="mt-10 elemento">
+                            <div class="mb-5 flex items-center justify-between">
+                            <h3 class="text-lg md:text-xl font-semibold">UI/UX Design</h3>
+                            </div>
+                            <div id="gridDesign" class="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="experiencia" class="mx-auto max-w-6xl px-5 py-16 md:py-20 border-b border-[#2b2a2a]">
+                <div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-10 md:gap-12">
+                    <!-- ESQUERDA: título + texto -->
+                    <div class="">
+                        <h1 class="mt-2 elemento font-extrabold leading-[1.05] text-3xl sm:text-4xl md:text-5xl">
+                            <span class="bg-clip-text text-transparent"
+                            style="background-image: linear-gradient(90deg, #f9fafb 0%, #d1d5db 40%, #9ca3af 80%);">
+                            Experiências
+                            </span>
+                        </h1>
+                        <p class="elemento mt-3 md:mt-5 max-w-2xl text-sm sm:text-base md:text-[17px] text-white/70">
+                            Atualmente sou Analista de Suporte na <strong>Nova Proficio</strong>, representante de ERP para postos de combustíveis.
+                            Em desenvolvimento web e UI/UX, atuei em <strong>três projetos como freelancer</strong> para a <strong>IOHub Digital</strong> (clientes nos EUA):
+                            <strong>dois front-ends</strong> com React, TypeScript e Tailwind CSS e <strong>um projeto de design</strong> com protótipos no Figma.
+                        </p>
+                        <div class="elemento mt-6 flex flex-wrap items-center gap-3 text-white">
+                            <a href="#cv"
+                                class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium hover:border-white/35 hover:bg-white/5 transition">
+                                <i class="ph ph-download-simple text-lg"></i>
+                                Download CV
+                            </a>
+                            <a href="https://github.com" class="grid place-items-center h-9 w-9 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5 transition" aria-label="GitHub">
+                                <i class="ph ph-github-logo text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- DIREITA: CARD timeline (idêntico ao layout da direita) -->
+                    <div class="elemento rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6 lg:p-8 self-start">
+                        <h3 class="text-white text-base md:text-lg font-semibold mb-4">Minha jornada</h3>
+
+                        <!-- linha contínua + espaçamento entre itens -->
+                        <ol class="relative border-l border-white/15 pl-6 space-y-6" aria-label="Linha do tempo de experiências">
+                            <!-- UnectJr -->
+                            <li class="relative">
+                            <!-- bolinha centralizada na linha -->
+                            <span class="absolute -left-6 top-2 w-3 h-3 rounded-full bg-white ring-2 ring-white/20 transform translate-x-1/2"></span>
+
+                            <p class="text-sm md:text-base text-white/90 leading-tight">
+                                <span class="font-semibold">UnectJr</span> — Desenvolvedor
+                            </p>
+                            <span class="block mt-1 text-xs text-white/60">2020–2021</span>
+                            </li>
+
+                            <!-- IOHub Digital -->
+                            <li class="relative">
+                            <span class="absolute -left-6 top-2 w-3 h-3 rounded-full bg-white ring-2 ring-white/20 transform translate-x-1/2"></span>
+
+                            <p class="text-sm md:text-base text-white/90 leading-tight">
+                                <span class="font-semibold">IOHub Digital</span> — Freelancer • Desenvolvedor Front-end &amp; UI/UX Designer
+                            </p>
+                            <span class="block mt-1 text-xs text-white/60">2023–2024</span>
+                            </li>
+
+                            <!-- Nova Proficio Automação (atual) -->
+                            <li class="relative">
+                            <span class="absolute -left-6 top-2 w-3 h-3 rounded-full bg-gradient-to-br from-white to-white/70 ring-2 ring-white/20 transform translate-x-1/2"></span>
+
+                            <p class="text-sm md:text-base text-white/90 leading-tight">
+                                <span class="font-semibold">Nova Proficio Automação</span> — Analista de Suporte
+                            </p>
+                            <span class="block mt-1 text-xs text-white/60">2022–atual</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section id="habilidades" class="mx-auto max-w-6xl px-5 py-16 text-white">
+                <div class="elemento mb-6 flex items-end justify-between">
+                    <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">
+                        <span class="bg-clip-text text-transparent"
+                            style="background-image:linear-gradient(90deg,#f9fafb 0%,#d1d5db 40%,#9ca3af 80%)">
+                            Habilidades
+                        </span>
+                        </h2>
+                    </div>
+
+                    <p class="text-white/70 max-w-2xl mb-6 elemento">
+                        Stack focada em <strong>Front-end</strong> com base sólida em <strong>Back-end</strong>, ferramentas do dia a dia e
+                        <strong>soft skills</strong> que fazem diferença no time.
+                    </p>
+
+                    <!-- trilho: carrossel no mobile / grid no desktop -->
+                    <div id="skillsTrack"
+                        class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2
+                                md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:gap-5">
+                        <!-- CARD -->
+                        <article class="reveal min-w-[78%] xs:min-w-[70%] sm:min-w-[60%] md:min-w-0 snap-start
+                                        rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/25 hover:bg-white/7 transition">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="ph ph-monitor text-xl"></i>
+                            <h3 class="font-semibold">Front-end</h3>
+                        </div>
+                        <p class="text-sm text-white/70 mb-4">Interfaces rápidas, acessíveis e responsivas.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- chips -->
+                            <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Tailwind</span>
+                            <span class="chip">JavaScript</span><span class="chip">UI/UX</span>
+                            <span class="chip">ReactJS</span><span class="chip">React Native</span>
+                        </div>
+                        </article>
+
+                        <article class="reveal min-w-[78%] xs:min-w-[70%] sm:min-w-[60%] md:min-w-0 snap-start
+                                        rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/25 hover:bg-white/7 transition">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="ph ph-server text-xl"></i>
+                            <h3 class="font-semibold">Back-end</h3>
+                        </div>
+                        <p class="text-sm text-white/70 mb-4">APIs limpas, seguras e bem documentadas.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">REST</span>
+                            <span class="chip">MongoDB</span><span class="chip">SQL</span>
+                        </div>
+                        </article>
+
+                        <article class="reveal min-w-[78%] xs:min-w-[70%] sm:min-w-[60%] md:min-w-0 snap-start
+                                        rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/25 hover:bg-white/7 transition">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="ph ph-wrench text-xl"></i>
+                            <h3 class="font-semibold">Ferramentas</h3>
+                        </div>
+                        <p class="text-sm text-white/70 mb-4">Fluxo de trabalho estável e colaborativo.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="chip">Git & GitHub</span><span class="chip">Postman</span><span class="chip">Figma</span>
+                        </div>
+                        </article>
+
+                        <article class="reveal min-w-[78%] xs:min-w-[70%] sm:min-w-[60%] md:min-w-0 snap-start
+                                        rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/25 hover:bg-white/7 transition">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="ph ph-sparkle text-xl"></i>
+                            <h3 class="font-semibold">Outros</h3>
+                        </div>
+                        <p class="text-sm text-white/70 mb-4">O que me ajuda a entregar melhor.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="chip">Automação de rotinas</span>
+                            <span class="chip">Integrações</span>
+                            <span class="chip">Boas práticas</span>
+                            <span class="chip">Comunicação</span>
+                            <span class="chip">Trabalho em equipe</span>
+                            <span class="chip">Proatividade</span>
+                        </div>
+                        </article>
+                    </div>
+            </section>
+
+            <!-- CONTATO -->
+            <section id="contato" class="mx-auto max-w-6xl px-5 text-white">
+                <div class="mb-6 elemento">
+                    <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">
+                        <span class="bg-clip-text text-transparent"
+                            style="background-image:linear-gradient(90deg,#f9fafb 0%,#d1d5db 40%,#9ca3af 80%)">
+                            Vamos conversar
+                        </span>
+                    </h2>
+                    <p class="mt-2 text-white/70">Fala comigo por WhatsApp/LinkedIn ou manda um e-mail pelo formulário.</p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2 items-start">
+                    <!-- LADO ESQUERDO: cards de contato -->
+                    <div class="elemento space-y-4 elemento">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/5514997031879?text=Ol%C3%A1%20Hebert!%20Vim%20pelo%20seu%20portf%C3%B3lio.%20Podemos%20conversar%3F"
+                            target="_blank" rel="noopener"
+                            class="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/30 hover:bg-white/10 transition">
+                            <div class="flex items-center gap-3">
+                            <i class="ph ph-whatsapp-logo text-2xl"></i>
+                            <div>
+                                <p class="font-semibold">WhatsApp</p>
+                                <p class="text-sm text-white/70">+55 (14) 99703-1879</p>
+                            </div>
+                            </div>
+                            <span class="text-xs rounded-full border border-white/15 px-3 py-1 group-hover:border-white/35">Abrir</span>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/hebertwilly/" target="_blank" rel="noopener"
+                            class="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/30 hover:bg-white/10 transition">
+                            <div class="flex items-center gap-3">
+                            <i class="ph ph-linkedin-logo text-2xl"></i>
+                            <div>
+                                <p class="font-semibold">LinkedIn</p>
+                                <p class="text-sm text-white/70">/in/hebertwilly</p>
+                            </div>
+                            </div>
+                            <span class="text-xs rounded-full border border-white/15 px-3 py-1 group-hover:border-white/35">Visitar</span>
+                        </a>
+
+                        <a href="https://www.behance.net/hebertwilly1" target="_blank"
+                            class="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/30 hover:bg-white/10 transition">
+                            <div class="flex items-center gap-3">
+                             <i class="ph ph-github-logo text-xl"></i>
+                            <div>
+                                <p class="font-semibold">GitHub</p>
+                                <p class="text-sm text-white/70">Meus Repositórios no GitHub</p>
+                            </div>
+                            </div>
+                            <span class="text-xs rounded-full border border-white/15 px-3 py-1 group-hover:border-white/35">Visitar</span>
+                        </a>
+
+                        <a href="https://www.behance.net/hebertwilly1" target="_blank"
+                            class="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-5 hover:border-white/30 hover:bg-white/10 transition">
+                            <div class="flex items-center gap-3">
+                            <i class="ph ph-behance-logo text-xl"></i>
+                            <div>
+                                <p class="font-semibold">Behance</p>
+                                <p class="text-sm text-white/70">Meu Portfólio UI/UX</p>
+                            </div>
+                            </div>
+                            <span class="text-xs rounded-full border border-white/15 px-3 py-1 group-hover:border-white/35">Visitar</span>
+                        </a>
+                    </div>
+
+                    <!-- LADO DIREITO: formulário de e-mail -->
+                    <div class="elemento rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
+                        <h3 class="font-semibold mb-4"><i class="ph ph-microsoft-outlook-logo text-1xl"></i> hebertwilly@hotmail.com</h3>
+                        <form id="contato-form" data-email="seuemail@exemplo.com" class="space-y-4">
+                            <!-- troque data-email acima pelo seu e-mail real -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="flex flex-col gap-1 text-sm">
+                                Nome
+                                <input name="nome" required
+                                    class="rounded-lg border border-white/10 bg-black/30 px-3 py-2 outline-none focus:border-white/30"
+                                    placeholder="Seu nome">
+                            </label>
+                            <label class="flex flex-col gap-1 text-sm">
+                                Seu e-mail
+                                <input name="replyto" type="email" required
+                                    class="rounded-lg border border-white/10 bg-black/30 px-3 py-2 outline-none focus:border-white/30"
+                                    placeholder="voce@email.com">
+                            </label>
+                            </div>
+
+                            <label class="flex flex-col gap-1 text-sm">
+                            Assunto
+                            <input name="assunto"
+                                    class="rounded-lg border border-white/10 bg-black/30 px-3 py-2 outline-none focus:border-white/30"
+                                    placeholder="Assunto da mensagem">
+                            </label>
+
+                            <label class="flex flex-col gap-1 text-sm">
+                            Mensagem
+                            <textarea name="mensagem" rows="5" required
+                                        class="rounded-lg border border-white/10 bg-black/30 px-3 py-2 outline-none focus:border-white/30"
+                                        placeholder="Escreva sua mensagem..."></textarea>
+                            </label>
+
+                            <div class="flex items-center justify-between gap-3 pt-2">
+                                <button id="contato-submit" type="submit"
+                                class="rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-gray-200 transition">
+                                Enviar e-mail
+                                </button>
+                                <p id="contato-status" class="text-xs text-white/60"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="mt-20 text-white w-full">
+                <div class="">
+                    <div class=" border border-white/10 bg-white/5 p-6 md:p-8">
+                    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                        <!-- Marca / resumo -->
+                        <div>
+                        <a href="#topo" class="inline-flex items-center gap-2">
+                            <span class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/10">
+                            <i class="ph ph-code-simple"></i>
+                            </span>
+                            <span class="text-lg font-semibold">Hebert Willy</span>
+                        </a>
+                        <p class="mt-3 text-sm text-white/70 max-w-xs">
+                            Front-end com base em Back-end e UI/UX. Interfaces performáticas e acessíveis.
+                        </p>
+
+                        <div class="mt-4 flex gap-3">
+                            <a href="https://github.com/hebertwilly" target="_blank" rel="noopener"
+                            class="grid h-9 w-9 place-items-center rounded-full border border-white/15 hover:border-white/35 hover:bg-white/10 transition"
+                            aria-label="GitHub">
+                            <i class="ph ph-github-logo text-lg"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/hebertwilly/" target="_blank" rel="noopener"
+                            class="grid h-9 w-9 place-items-center rounded-full border border-white/15 hover:border-white/35 hover:bg-white/10 transition"
+                            aria-label="LinkedIn">
+                            <i class="ph ph-linkedin-logo text-lg"></i>
+                            </a>
+                            <a href="https://wa.me/5514997031879?text=Ol%C3%A1%20Hebert!%20Vim%20pelo%20seu%20portf%C3%B3lio."
+                            target="_blank" rel="noopener"
+                            class="grid h-9 w-9 place-items-center rounded-full border border-white/15 hover:border-white/35 hover:bg-white/10 transition"
+                            aria-label="WhatsApp">
+                            <i class="ph ph-whatsapp-logo text-lg"></i>
+                            </a>
+                        </div>
+                        </div>
+
+                        <!-- Navegação -->
+                        <div>
+                        <h4 class="mb-3 text-sm font-semibold text-white/80">Navegação</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a class="hover:text-white/90 text-white/70" href="#sobre">Sobre</a></li>
+                            <li><a class="hover:text-white/90 text-white/70" href="#projetos">Projetos</a></li>
+                            <li><a class="hover:text-white/90 text-white/70" href="#habilidades">Habilidades</a></li>
+                            <li><a class="hover:text-white/90 text-white/70" href="#contato">Contato</a></li>
+                        </ul>
+                        </div>
+
+                        <!-- Contato -->
+                        <div>
+                        <h4 class="mb-3 text-sm font-semibold text-white/80">Contato</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2">
+                            <i class="ph ph-envelope-simple text-base"></i>
+                            <a class="hover:text-white/90 text-white/70"
+                                href="mailto:seuemail@exemplo.com?subject=Contato%20pelo%20portf%C3%B3lio">hebertwilly@hotmail.com</a>
+                            </li>
+                            <li class="flex items-center gap-2">
+                            <i class="ph ph-phone text-base"></i>
+                            <a class="hover:text-white/90 text-white/70"
+                                href="https://wa.me/5514997031879" target="_blank" rel="noopener">+55 (14) 99703-1879</a>
+                            </li>
+                            <li class="flex items-center gap-2">
+                            <i class="ph ph-linkedin-logo text-base"></i>
+                            <a class="hover:text-white/90 text-white/70"
+                                href="https://www.linkedin.com/in/hebertwilly/" target="_blank" rel="noopener">/in/hebertwilly</a>
+                            </li>
+                        </ul>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="flex flex-col gap-3">
+                        <h4 class="text-sm font-semibold text-white/80">Disponível</h4>
+                        <p class="text-sm text-white/70">Aberto a <strong>estágio</strong> e <strong>freelas</strong>.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://wa.me/5514997031879?text=Ol%C3%A1%20Hebert!%20Podemos%20conversar%20sobre%20uma%20oportunidade%3F"
+                            target="_blank" rel="noopener"
+                            class="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gray-200 transition">
+                            Falar no WhatsApp
+                            </a>
+                            <a href="#projetos"
+                            class="rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/35 hover:bg-white/10 transition">
+                            Ver projetos
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- base -->
+                    <div class="mt-8 border-t border-white/10 pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-white/60">
+                        <p>© <span id="year"></span> Hebert Willy. Todos os direitos reservados.</p>
+                        <div class="flex items-center gap-4">
+                        <a href="#contato" class="hover:text-white/90">Contato</a>
+                        <a href="#home" class="hover:text-white/90">Voltar ao topo</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </footer>
+        </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+        <script src="javascript.js"></script>
+    </html>
