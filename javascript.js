@@ -1,17 +1,15 @@
-//ANIMAÇÃO AO CARREGAR A PAGINA
-    const elementos = document.querySelectorAll('.refresh-animate');
-    function animarElementos() {
-        elementos.forEach(elemento => {
-            // Adiciona a classe de animação
-            elemento.classList.add('animar');
-        });
-    }
+/* =======================
+   HERO – anima ao carregar
+   ======================= */
+(function(){
+  const elementos = document.querySelectorAll('.refresh-animate');
+  function animarElementos(){ elementos.forEach(el => el.classList.add('animar')); }
+  window.addEventListener('load', animarElementos);
+})();
 
-window.addEventListener('load', animarElementos);
-
-
-
-//HEADER - MENU HAMBUGUER
+/* =======================
+   Header – menu hambúrguer
+   ======================= */
 (function initHamburger(){
   const btn       = document.getElementById('menuToggle');
   const menu      = document.getElementById('mobileMenu');
@@ -38,47 +36,24 @@ window.addEventListener('load', animarElementos);
 
   const toggle = () => (menu.classList.contains('hidden') ? open() : close());
 
-  // estado inicial
-  close();
-
-  // eventos
+  close(); // estado inicial
   btn.addEventListener('click', toggle);
-  // fecha ao clicar em qualquer link dentro do menu
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) close(); });
-  // fecha no ESC
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-  // fecha ao clicar fora
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !btn.contains(e.target)) close();
-  });
-  // opcional: ao passar de lg, fecha
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024) close();
-  });
+  document.addEventListener('click', (e) => { if (!menu.contains(e.target) && !btn.contains(e.target)) close(); });
+  window.addEventListener('resize', () => { if (window.innerWidth >= 1024) close(); });
 })();
-  //RENDER CARDS - PROJETOS
-const gridDev = document.getElementById('gridDev');
-const gridDesign = document.getElementById('gridDesign');
 
-const DEV_LIMIT = 6;
-let devExpanded = false;
-
-// gera thumb (mantém suas helpers)
-function thumbFrom(url){ if(!url) return null; try { return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200`; } catch { return null; } }
-function placeholderFrom(titulo){
-  const svg = `
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'>
-    <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-      <stop offset='0%' stop-color='#0b0b0b'/><stop offset='100%' stop-color='#1a1a1a'/></linearGradient></defs>
-    <rect width='1200' height='675' fill='url(#g)'/>
-    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-      font-family='Inter, Arial' font-size='48' fill='#fff' fill-opacity='0.9'>${titulo.replace(/&/g,"&amp;")}</text>
-  </svg>`;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-}
-
+/* ==========================================
+   Renderização dos projetos (DEV / DESIGN)
+   ========================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  // --------- DADOS (do teu briefing) ----------
+  const gridDev    = document.getElementById('gridDev');
+  const gridDesign = document.getElementById('gridDesign');
+  const DEV_LIMIT  = 3;
+  let devExpanded  = false;
+
+  // -------- dados (ajuste à vontade) --------
   const projetosDev = [
     { titulo:"YourJob — Projeto pessoal", tipo:"front-end",
       descricao:"Estudos de front-end: landing, formulários e navegação. Deploy no GitHub Pages.",
@@ -131,14 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       behanceEmbed:`<iframe src="https://www.behance.net/embed/project/195145017?ilo0=1" class="w-full h-full" allowfullscreen loading="lazy" frameborder="0"></iframe>` },
   ];
 
-  // --------- HELPERS ----------
-  const gridDev = document.getElementById('gridDev');
-  const gridDesign = document.getElementById('gridDesign');
-  const DEV_LIMIT = 3;
-  let devExpanded = false;
-
   const thumbFrom = (url) => url ? `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200` : null;
-
   const placeholderFrom = (titulo) => {
     const svg = `
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'>
@@ -151,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   };
 
-  // --------- RENDER DEV (com ver mais) ----------
   function renderDev(lista, expanded=false) {
     if (!gridDev) return;
     gridDev.innerHTML = '';
@@ -160,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach((p) => {
       const shot = p.imagem || thumbFrom(p.links?.live) || thumbFrom(p.links?.repo) || placeholderFrom(p.titulo);
       const el = document.createElement('article');
-      el.className = 'group rounded-2xl overflow-hidden border border-white/10 bg-black/30 hover:bg-black/25 transition flex flex-col';
+      // NOTE: adiciono 'elemento' pra entrar no scroll-reveal
+      el.className = 'elemento group rounded-2xl overflow-hidden border border-white/10 bg-black/30 hover:bg-black/25 transition flex flex-col';
       el.setAttribute('data-type', p.tipo);
       el.innerHTML = `
         <div class="relative aspect-[16/9] overflow-hidden">
@@ -193,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --------- RENDER DESIGN ----------
   function renderDesign(lista) {
     if (!gridDesign) return;
     gridDesign.innerHTML = '';
@@ -204,7 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
         : `<img src="${shot}" alt="${p.titulo}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 duration-500">`;
 
       const el = document.createElement('article');
-      el.className = 'group rounded-2xl overflow-hidden border border-white/10 bg-black/30 hover:bg-black/25 transition flex flex-col';
+      // NOTE: adiciono 'elemento' pra entrar no scroll-reveal
+      el.className = 'elemento group rounded-2xl overflow-hidden border border-white/10 bg-black/30 hover:bg-black/25 transition flex flex-col';
       el.setAttribute('data-type', p.tipo);
       el.innerHTML = `
         <div class="relative aspect-[16/9] overflow-hidden">
@@ -226,56 +194,109 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --------- Controles Ver mais/menos ----------
+  // botão ver mais/menos
   const btnDevToggle = document.getElementById('btnDevToggle');
-  if (btnDevToggle) {
-    btnDevToggle.addEventListener('click', () => {
-      devExpanded = !devExpanded;
-      renderDev(projetosDev, devExpanded);
-      if (!devExpanded) gridDev.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
+  btnDevToggle?.addEventListener('click', () => {
+    devExpanded = !devExpanded;
+    renderDev(projetosDev, devExpanded);
+  });
 
-  // --------- Start ----------
+  // Render inicial
   renderDev(projetosDev, false);
   renderDesign(projetosDesign);
+
+  // Atualiza o ano do footer
+  const $year = document.getElementById('year');
+  if ($year) $year.textContent = String(new Date().getFullYear());
 });
 
-//Animação scroll cards habilidades
-
-const track = document.getElementById('skillsTrack');
+/* =====================================
+   Skills – scroll por página (setas)
+   ===================================== */
+(function(){
+  const track = document.getElementById('skillsTrack');
   const prev  = document.getElementById('skillsPrev');
   const next  = document.getElementById('skillsNext');
+  if (!track) return;
 
-  // navegação (desktop)
   function scrollByPage(dir=1){
     const amount = track.clientWidth * 0.9;
-    track.scrollBy({left: amount * dir, behavior:'smooth'});
+    track.scrollBy({ left: amount * dir, behavior:'smooth' });
   }
   prev?.addEventListener('click', ()=>scrollByPage(-1));
   next?.addEventListener('click', ()=>scrollByPage(1));
-
-  // teclado (mobile/desktop)
   track.addEventListener('keydown', (e)=>{
     if(e.key==='ArrowRight') scrollByPage(1);
     if(e.key==='ArrowLeft')  scrollByPage(-1);
   });
+})();
 
-  // animação de entrada
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); });
-  }, {threshold:.15});
-  document.querySelectorAll('#skillsTrack .reveal').forEach(el => io.observe(el));
+/* ====================================================
+   Scroll reveal com IntersectionObserver (sem GSAP)
+   ==================================================== */
+(function scrollReveal(){
+  const selector = '.elemento, #skillsTrack .reveal';
 
-//ENVIO DE EMAIL VIA EMAILJS
- // ====== CONFIG ======
-  const EMAILJS_PUBLIC_KEY  = 'iyeb5UkSSBlznvnsy';   // tua public key
-  const EMAILJS_SERVICE_ID  = 'service_he8q3a9';     // teu service (Outlook)
-  const EMAILJS_TEMPLATE_ID = 'template_76iuemd';  // <-- TROCA pelo ID do teu template
-  // =====================
+  // estado inicial SÓ pra quem começa fora da viewport
+  const prime = (el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top >= window.innerHeight * 0.98) el.classList.add('sr-init');
+  };
 
-  // Inicializa EmailJS
-  (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
+  const applyToNodeAndChildren = (node) => {
+    if (node.nodeType !== 1) return;
+    if (node.matches?.(selector)) { prime(node); io.observe(node); }
+    node.querySelectorAll?.(selector).forEach(el => { prime(el); io.observe(el); });
+  };
+
+  const onEnter = (entry) => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    el.classList.add('sr-in');
+    el.classList.remove('sr-init');
+    io.unobserve(el);
+  };
+
+  const io = new IntersectionObserver((entries)=>entries.forEach(onEnter), {
+    threshold: 0.12,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  // aplica nos existentes
+  document.querySelectorAll(selector).forEach(el => { prime(el); io.observe(el); });
+
+  // observa grids que recebem itens dinamicamente
+  ['#gridDev','#gridDesign'].forEach(sel=>{
+    const node = document.querySelector(sel);
+    if(!node) return;
+    new MutationObserver((ms)=>{
+      ms.forEach(m => m.addedNodes.forEach(applyToNodeAndChildren));
+    }).observe(node, { childList:true, subtree:true });
+  });
+
+  // após navegar por âncora, libera o que já entrou na tela
+  const revealNow = () => {
+    document.querySelectorAll('.sr-init').forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.95) { el.classList.add('sr-in'); el.classList.remove('sr-init'); }
+    });
+  };
+  window.addEventListener('hashchange', () => requestAnimationFrame(revealNow));
+  window.addEventListener('load', revealNow, { once:true });
+  window.addEventListener('orientationchange', () => setTimeout(revealNow, 200));
+  let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(revealNow, 120); });
+})();
+
+/* =========================
+   EmailJS – envio do form
+   ========================= */
+(function setupEmail(){
+  const EMAILJS_PUBLIC_KEY  = 'iyeb5UkSSBlznvnsy';
+  const EMAILJS_SERVICE_ID  = 'service_he8q3a9';
+  const EMAILJS_TEMPLATE_ID = 'template_76iuemd';
+
+  if (!window.emailjs) return;
+  emailjs.init(EMAILJS_PUBLIC_KEY);
 
   const form   = document.getElementById('contato-form');
   const status = document.getElementById('contato-status');
@@ -283,10 +304,8 @@ const track = document.getElementById('skillsTrack');
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // pega dados do form
     const nome      = form.nome.value.trim();
-    const emailUser = form.replyto.value.trim(); // teu input de email
+    const emailUser = form.replyto.value.trim();
     const assunto   = (form.assunto.value || 'Contato pelo portfólio').trim();
     const mensagem  = form.mensagem.value.trim();
 
@@ -295,17 +314,8 @@ const track = document.getElementById('skillsTrack');
       return;
     }
 
-    // Envia ambas chaves de e-mail pra evitar mismatch de variável no template
-    // (tanto {{email}} quanto {{replyto}} vão funcionar)
-    const data = {
-      nome:     nome,
-      mensagem: mensagem,
-      assunto:  assunto,
-      email:    emailUser,  // caso teu template use {{email}}
-      replyto:  emailUser,  // caso teu template use {{replyto}}
-    };
+    const data = { nome, mensagem, assunto, email: emailUser, replyto: emailUser };
 
-    // UX
     btn.disabled = true;
     btn.textContent = 'Enviando...';
     status.textContent = 'Enviando sua mensagem...';
@@ -323,91 +333,19 @@ const track = document.getElementById('skillsTrack');
       setTimeout(() => status.textContent = '', 5000);
     }
   });
-
-
-
-//ANIMAÇÃO DE SCROLL COM GSAP
-
-(function () {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 1) Estado inicial dos elementos
-  gsap.set('.elemento', { opacity: 0, y: 20 });
-
-  // 2) Animação por lote
-  ScrollTrigger.batch('.elemento', {
-    start: 'top 80%',
-    // once: true,
-    onEnter: (els) => gsap.to(els, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power1.out',
-      stagger: 0.06,
-      overwrite: true
-    }),
-    onLeaveBack: (els) => gsap.to(els, {
-      opacity: 0,
-      y: 20,
-      duration: 0.4,
-      ease: 'power1.out',
-      overwrite: true
-    }),
-    invalidateOnRefresh: true
-  });
-
-  // 3) Header dinâmico
-  const headerEl = document.getElementById('site-header') || document.querySelector('header');
-  function setHeaderVar() {
-    const h = headerEl?.offsetHeight || 0;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-  }
-
- 
-  function revealAlreadyInView() {
-    const vh = window.innerHeight;
-    document.querySelectorAll('.elemento').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top <= vh * 0.8 && r.bottom >= 0) {
-        gsap.set(el, { opacity: 1, y: 0 });
-      }
-    });
-  }
-
-  // 5) Eventos
-  window.addEventListener('load', () => {
-    setHeaderVar();
-    revealAlreadyInView();
-    setTimeout(() => ScrollTrigger.refresh(), 100);
-  });
-
-  window.addEventListener('resize', () => {
-    setHeaderVar();
-    ScrollTrigger.refresh();
-  });
-
- 
-  window.addEventListener('hashchange', () => {
-    setTimeout(() => {
-      revealAlreadyInView();
-      ScrollTrigger.refresh();
-    }, 50);
-  });
 })();
 
-
-// === CURRÍCULO: arquivo local ===
+/* ==========================================
+   Currículo – apontar para o PDF local
+   ========================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  const CV_URL = '/cv/HebertWillyCV.pdf';   // caminho do teu PDF
+  const CV_URL  = '/cv/HebertWillyCV.pdf';
   const CV_NAME = 'Hebert-Willy-CV.pdf';
-
-  // pega todos os links de currículo: header, mobile e "Download CV" (que hoje apontam pra #cv)
   const selectors = ['#btnCV', '#btnCVMobile', 'a[href="#cv"]'];
   const links = document.querySelectorAll(selectors.join(','));
-
   links.forEach(a => {
     a.href = CV_URL;
-    a.setAttribute('download', CV_NAME);         // força download (mesma origem)
+    a.setAttribute('download', CV_NAME);
     a.setAttribute('type', 'application/pdf');
     a.setAttribute('rel', 'noopener');
     a.setAttribute('target', '_blank');
