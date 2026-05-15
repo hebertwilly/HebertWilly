@@ -55,13 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // -------- dados (ajuste à vontade) --------
   const projetosDev = [
+    {
+      titulo:"Made4it - Landing Page (Freelancer)",
+      tipo:"front-end - WordPress + Elementor",
+      descricao:"Site institucional responsivo feito com Elementor.",
+      imagem:"./imgs/made4it.png",
+      tags:["HTML", "CSS", "JavaScript", "Elementor", "Wordpress"],
+      links:{ live:"https://palevioletred-moose-987486.hostingersite.com/" }
+    },
     { titulo:"YourJob — Projeto pessoal", tipo:"front-end",
       descricao:"Estudos de front-end: landing, formulários e navegação. Deploy no GitHub Pages.",
-      imagem:"", tags:["HTML","CSS","Tailwind","JavaScript","GSAP","Front-end"],
+      imagem:"./imgs/yourjob.png", tags:["HTML","CSS","Tailwind","JavaScript","GSAP","Front-end"],
       links:{ live:"https://hebertwilly.github.io/YourJob/pages/fromEmpresas/index.html", repo:"https://github.com/hebertwilly/YourJob" } },
     { titulo:"Lace Laboratórios — Landing Page (Freelancer)", tipo:"front-end",
       descricao:"Site institucional responsivo com animações GSAP e formulário de contato.",
-      imagem:"", tags:["HTML","Tailwind","JavaScript","GSAP","Front-end"],
+      imagem:"./imgs/lace.png", tags:["HTML","Tailwind","JavaScript","GSAP","Front-end"],
       links:{ live:"https://www.lacelaboratorios.com.br/", repo:"https://github.com/hebertwilly/Laboratorio_Lace_LP" } },
     { titulo:"Leadsy — Landing + Responsividade (Freelancer)", tipo:"front-end",
       descricao:"Landing e responsividade multi-breakpoint com TypeScript, Next.js e Tailwind.",
@@ -131,8 +139,16 @@ document.addEventListener('DOMContentLoaded', () => {
       el.className = 'elemento group rounded-2xl overflow-hidden border border-white/10 bg-black/30 hover:bg-black/25 transition flex flex-col';
       el.setAttribute('data-type', p.tipo);
       el.innerHTML = `
-        <div class="relative aspect-[16/9] overflow-hidden">
-          <img src="${shot}" alt="${p.titulo}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 duration-500">
+        <div class="project-thumb relative aspect-[16/9] overflow-hidden skeleton">
+          <img 
+            src="${shot}" 
+            alt="${p.titulo}" 
+            loading="lazy" 
+            class="w-full h-full object-cover group-hover:scale-105 duration-500"
+            onload="this.parentElement.classList.remove('skeleton')"
+            onerror="this.parentElement.classList.remove('skeleton')"
+          >
+
           <span class="absolute top-3 left-3 text-[11px] px-2 py-1 rounded-md bg-white/90 text-black border border-black/10">DEV</span>
         </div>
         <div class="p-5 flex-1 flex flex-col">
@@ -142,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${p.tags.map(t => `<span class="text-xs px-2 py-1 rounded-md bg-white/5 border border-white/10">${t}</span>`).join('')}
           </div>
           <div class="mt-auto pt-4 flex flex-wrap items-center gap-3">
-            ${p.links?.live ? `<a href="${p.links.live}" target="_blank" rel="noopener" class="text-sm px-3 py-1.5 rounded-full bg-white text-black hover:bg-gray-200">Live</a>` : ''}
+            ${p.links?.live ? `<a href="${p.links.live}" target="_blank" rel="noopener" class="text-sm px-3 py-1.5 rounded-full bg-white text-black hover:bg-gray-200">Visitar Site</a>` : ''}
             ${p.links?.repo ? `<a href="${p.links.repo}" target="_blank" rel="noopener" class="text-sm px-3 py-1.5 rounded-full border border-white/15 hover:border-white/35 hover:bg-white/5">Código</a>` : ''}
           </div>
         </div>`;
